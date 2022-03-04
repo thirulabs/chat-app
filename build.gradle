@@ -9,15 +9,15 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
 }
-
+allprojects {
+    sourceCompatibility = '11'
+}
 subprojects {
     group 'org.thirulabs'
     version '1.0-SNAPSHOT'
 
     apply plugin: 'java'
     apply plugin: 'io.spring.dependency-management'
-
-    sourceCompatibility = '11'
 
     repositories {
         mavenCentral()

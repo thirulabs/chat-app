@@ -10,6 +10,11 @@ configurations {
 
 dependencies {
     implementation project(':chat-commons')
+    implementation project(':chat-server-commons')
+    implementation project(':chat-server-grpc-module')
+    implementation project(':chat-server-restful-module')
+    implementation project(':chat-server-rsocket-module')
+    implementation project(':chat-server-dubbo-module')
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
@@ -19,3 +24,4 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
