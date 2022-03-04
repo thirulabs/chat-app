@@ -1,15 +1,23 @@
 rootProject.name = 'chat-app'
+//common library module
 include 'chat-commons'
-include 'chat-server'
-include 'chat-client'
+
+//main applications
+include 'chat-server-app'
+include 'chat-client-app'
+
+//server modules
+include 'chat-server-commons'
 include 'chat-server-grpc-module'
 include 'chat-server-rsocket-module'
 include 'chat-server-restful-module'
-include 'chat-server-commons'
 include 'chat-server-dubbo-module'
+
+//client modules
+include 'chat-client-commons'
 include 'chat-client-grpc-module'
 include 'chat-client-restful-module'
 include 'chat-client-rsocket-module'
 include 'chat-client-dubbo-module'
-include 'chat-client-commons'
+
 
