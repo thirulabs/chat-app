@@ -29,16 +29,15 @@ public class InMemoryMessageService implements MessageService {
         //generate id before saving it to map
         Long id = idGenerator.incrementAndGet();
         message.setId(id);
-        return messageMap.put(id, message);
+        messageMap.put(id, message);
+        return message;
     }
 
     @Override
     public boolean update(Long id, Message message) {
-        if(id!=null && message!=null && id.equals(message.getId())){
-            messageMap.replace(id, message);
-            return true;
-        }
-        return false;
+        message.setId(id);
+        messageMap.replace(id, message);
+        return true;
     }
 
     @Override

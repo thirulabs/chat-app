@@ -3,6 +3,11 @@ plugins {
 }
 
 dependencies {
+    implementation project(':chat-commons')
+    implementation project(':chat-client-service-module')
+    implementation 'org.springframework:spring-web'
+    implementation 'org.springframework:spring-context'
+
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }

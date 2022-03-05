@@ -1,4 +1,4 @@
-package org.thirulabs.chatapp.chatclient;
+package org.thirulabs.chat.client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

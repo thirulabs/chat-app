@@ -1,4 +1,4 @@
-package org.thirulabs.chatapp.chatclient;
+package org.thirulabs.chat.client;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
