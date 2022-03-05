@@ -32,7 +32,7 @@ public class ProtoMessageGrpcService extends MessageServiceGrpc.MessageServiceIm
 
     @Override
     public void removeById(MessageID request, StreamObserver<Status> responseObserver) {
-        var status = messageService.remove(request.getMessageID());
+        var status = messageService.remove(request);
         responseObserver.onNext(status);
         responseObserver.onCompleted();
     }
@@ -53,7 +53,7 @@ public class ProtoMessageGrpcService extends MessageServiceGrpc.MessageServiceIm
 
     @Override
     public void findById(MessageID request, StreamObserver<Message> responseObserver) {
-        var message = messageService.findById(request.getMessageID());
+        var message = messageService.findById(request);
         responseObserver.onNext(message);
         responseObserver.onCompleted();
     }

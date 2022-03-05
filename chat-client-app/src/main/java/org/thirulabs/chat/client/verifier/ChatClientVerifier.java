@@ -22,7 +22,7 @@ import java.util.Optional;
 @Order(1)
 public class ChatClientVerifier implements ApplicationRunner {
     @Autowired
-    @Qualifier(ClientType.GRPC)
+    @Qualifier(ClientType.RSOCKET)
     private MessageServiceClient messageServiceClient;
 
     @Override

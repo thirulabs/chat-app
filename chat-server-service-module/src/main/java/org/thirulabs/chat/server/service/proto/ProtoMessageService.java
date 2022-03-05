@@ -3,6 +3,7 @@ package org.thirulabs.chat.server.service.proto;
 
 import org.thirulabs.chat.commons.proto.Message;
 import org.thirulabs.chat.commons.proto.MessageArray;
+import org.thirulabs.chat.commons.proto.MessageID;
 import org.thirulabs.chat.commons.proto.Status;
 
 public interface ProtoMessageService {
@@ -12,7 +13,7 @@ public interface ProtoMessageService {
      * @return Message if success, or empty when not found
      * Note: Could have used Optional here
      */
-    Message findById(Long id);
+    Message findById(MessageID id);
 
     /**
      * Finds all messages
@@ -38,7 +39,7 @@ public interface ProtoMessageService {
      * @param id of message
      * @return true on success
      */
-    Status remove(Long id);
+    Status remove(MessageID id);
 
     /**
      * Removes all messages

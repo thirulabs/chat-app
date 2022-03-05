@@ -24,7 +24,7 @@ import java.util.Optional;
 @Order(2)
 public class ChatClientRunner implements ApplicationRunner {
     @Autowired
-    @Qualifier(ClientType.GRPC)
+    @Qualifier(ClientType.RSOCKET)
     private MessageServiceClient messageServiceClient;
 
     @Value("${chat.operation.count:1}")

@@ -5,6 +5,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.stereotype.Controller;
 import org.thirulabs.chat.commons.proto.Message;
 import org.thirulabs.chat.commons.proto.MessageArray;
+import org.thirulabs.chat.commons.proto.MessageID;
 import org.thirulabs.chat.commons.proto.Status;
 import org.thirulabs.chat.server.service.proto.ProtoMessageService;
 
@@ -13,32 +14,32 @@ import org.thirulabs.chat.server.service.proto.ProtoMessageService;
 public class RSocketProtobufMessageService {
     private final ProtoMessageService protoMessageService;
 
-    @MessageMapping("find-by-id")
-    public Message findById(Long id) {
+    @MessageMapping("proto.message.find.by.id")
+    public Message findById(MessageID id) {
         return protoMessageService.findById(id);
     }
 
-    @MessageMapping("find-all")
+    @MessageMapping("proto.message.find.all")
     public MessageArray findAll() {
         return protoMessageService.findAll();
     }
 
-    @MessageMapping("add-message")
+    @MessageMapping("proto.message.add")
     public Message add(Message message) {
         return protoMessageService.add(message);
     }
 
-    @MessageMapping("update-message")
+    @MessageMapping("proto.message.update")
     public Status update(Message message) {
         return protoMessageService.update(message);
     }
 
-    @MessageMapping("remove-by-id")
-    public Status remove(Long id) {
+    @MessageMapping("proto.message.remove.by.id")
+    public Status remove(MessageID id) {
         return protoMessageService.remove(id);
     }
 
-    @MessageMapping("remove-all")
+    @MessageMapping("proto.message.remove.all")
     public void removeAll() {
         protoMessageService.removeAll();
     }
