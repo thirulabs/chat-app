@@ -1,4 +1,4 @@
-package org.thirulabs.chat.client.rest;
+package org.thirulabs.chat.client.rest.json;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

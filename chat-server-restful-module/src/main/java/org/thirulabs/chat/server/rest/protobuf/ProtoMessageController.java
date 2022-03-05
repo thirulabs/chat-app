@@ -1,39 +1,44 @@
-package org.thirulabs.chat.server.rest;
+package org.thirulabs.chat.server.rest.protobuf;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.thirulabs.chat.commons.Message;
+import org.thirulabs.chat.commons.MessageMapper;
+import org.thirulabs.chat.commons.proto.Message;
+import org.thirulabs.chat.commons.proto.MessageArray;
 import org.thirulabs.chat.server.service.MessageService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/message")
+@RequestMapping("/proto/message")
 @RequiredArgsConstructor
 @Slf4j
-public class MessageController {
+public class ProtoMessageController {
     private final MessageService messageService;
 
     @GetMapping()
-    public List<Message> findAll(){
-        return messageService.findAll();
+    public MessageArray findAll(){
+        var pList = MessageMapper.INSTANCE.map(messageService.findAll());
+        return MessageArray.newBuilder().addAllArray(pList).build();
     }
 
     @GetMapping("/{id}")
     public Message findById(@PathVariable Long id){
-        return messageService.findById(id);
+        return MessageMapper.INSTANCE.map(messageService.findById(id));
     }
 
     @PutMapping
     public Message add(@RequestBody Message message){
-        return messageService.add(message);
+        var msg = MessageMapper.INSTANCE.map(message);
+        msg = messageService.add(msg);
+        return MessageMapper.INSTANCE.map(msg);
     }
 
     @PostMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Message message){
-        boolean updated = messageService.update(id, message);
+        boolean updated = messageService.update(id, MessageMapper.INSTANCE.map(message));
         if(updated){
             return ResponseEntity.accepted().build();
         }else {
