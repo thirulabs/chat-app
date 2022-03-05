@@ -3,7 +3,6 @@ package org.thirulabs.chat.server.grpc;
 import com.google.protobuf.Empty;
 import io.grpc.stub.StreamObserver;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import org.thirulabs.chat.commons.MessageMapper;
 import org.thirulabs.chat.commons.proto.Message;
 import org.thirulabs.chat.commons.proto.MessageArray;
@@ -12,9 +11,12 @@ import org.thirulabs.chat.commons.proto.Status;
 import org.thirulabs.chat.commons.proto.grpc.MessageServiceGrpc;
 import org.thirulabs.chat.server.service.MessageService;
 
-@Service
+/**
+ * This is now obsolete, please use ProtoMessageGrpcService instead
+ */
+//@Service
 @RequiredArgsConstructor
-public class MessageGrpcService extends MessageServiceGrpc.MessageServiceImplBase {
+public class LegacyMessageGrpcService extends MessageServiceGrpc.MessageServiceImplBase {
     private final MessageService messageService;
 
     @Override

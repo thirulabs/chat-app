@@ -8,9 +8,9 @@ import org.thirulabs.chat.commons.proto.MessageArray;
 import org.thirulabs.chat.commons.proto.Status;
 import org.thirulabs.chat.server.service.MessageService;
 
-//@Service
+@Service
 @RequiredArgsConstructor
-public class ProtoMessageServiceDecorator implements ProtoMessageService{
+public class ProtoMessageMapperService implements ProtoMessageService{
     private final MessageService messageService;
 
     @Override

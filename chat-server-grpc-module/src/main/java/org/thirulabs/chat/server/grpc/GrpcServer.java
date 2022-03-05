@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Slf4j
 public class GrpcServer implements ApplicationRunner {
-    private final MessageGrpcService messageGrpcService;
+    private final ProtoMessageGrpcService messageGrpcService;
     @Value("${grpc.server.port}")
     private int grpcPort;
     @Override
