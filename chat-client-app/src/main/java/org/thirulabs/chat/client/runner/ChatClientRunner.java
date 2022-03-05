@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 import org.thirulabs.chat.client.service.ClientType;
 import org.thirulabs.chat.client.service.MessageServiceClient;
@@ -20,6 +21,7 @@ import java.util.Optional;
 
 @Service
 @Slf4j
+@Order(2)
 public class ChatClientRunner implements ApplicationRunner {
     @Autowired
     @Qualifier(ClientType.GRPC)
