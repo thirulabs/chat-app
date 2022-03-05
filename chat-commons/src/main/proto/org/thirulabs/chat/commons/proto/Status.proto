@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.thirulabs.chat.commons.proto";
+option java_outer_classname = "StatusProto";
+
+import "google/protobuf/empty.proto";
+
+package org.thirulabs.chat.commons.proto;
+
+message Status {
+  bool success = 1;
+}

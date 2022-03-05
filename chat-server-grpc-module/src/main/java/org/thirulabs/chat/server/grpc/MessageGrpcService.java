@@ -8,6 +8,7 @@ import org.thirulabs.chat.commons.MessageMapper;
 import org.thirulabs.chat.commons.proto.Message;
 import org.thirulabs.chat.commons.proto.MessageArray;
 import org.thirulabs.chat.commons.proto.MessageID;
+import org.thirulabs.chat.commons.proto.Status;
 import org.thirulabs.chat.commons.proto.grpc.MessageServiceGrpc;
 import org.thirulabs.chat.server.service.MessageService;
 
@@ -24,19 +25,17 @@ public class MessageGrpcService extends MessageServiceGrpc.MessageServiceImplBas
     }
 
     @Override
-    public void update(Message request, StreamObserver<Message> responseObserver) {
+    public void update(Message request, StreamObserver<Status> responseObserver) {
         boolean updated = messageService.update(request.getMessageID(), MessageMapper.INSTANCE.map(request));
-        //TODO change the return type of rpc to boolean
-        responseObserver.onNext(request); //TODO change it to boolean instead of returning the request object
+        responseObserver.onNext(Status.newBuilder().setSuccess(updated).build());
         responseObserver.onCompleted();
     }
 
     @Override
-    public void removeById(MessageID request, StreamObserver<Empty> responseObserver) {
-        messageService.remove(request.getMessageID());
-        responseObserver.onNext(Empty.newBuilder().build());
+    public void removeById(MessageID request, StreamObserver<Status> responseObserver) {
+        boolean removed = messageService.remove(request.getMessageID());
+        responseObserver.onNext(Status.newBuilder().setSuccess(removed).build());
         responseObserver.onCompleted();
-        //TODO handle error cases
     }
 
     @Override
