@@ -97,4 +97,10 @@ public class MessageServiceRestClient implements MessageServiceClient {
         restTemplate.delete(url);
         return true; //TODO use exchange and inspect response entity for status code
     }
+
+    @Override
+    public void removeAll() {
+        String url = String.format(MESSAGE_URI_FORMAT,chatServerUrl);
+        restTemplate.delete(url);
+    }
 }

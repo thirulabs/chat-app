@@ -51,4 +51,9 @@ public class MessageController {
         }
     }
 
+    @DeleteMapping()
+    public ResponseEntity<?> remove(){
+        messageService.removeAll();
+        return ResponseEntity.accepted().build();
+    }
 }

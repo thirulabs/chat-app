@@ -45,4 +45,9 @@ public class InMemoryMessageService implements MessageService {
         //remove method returns the object removed, returns null when key is not found
         return messageMap.remove(id) != null;
     }
+
+    @Override
+    public void removeAll() {
+        messageMap.clear();
+    }
 }

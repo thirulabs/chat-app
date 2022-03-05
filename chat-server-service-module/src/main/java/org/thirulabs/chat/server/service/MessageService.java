@@ -39,4 +39,9 @@ public interface MessageService {
      * @return true on success
      */
     boolean remove(Long id);
+
+    /**
+     * Removes all messages
+     */
+    void removeAll();
 }

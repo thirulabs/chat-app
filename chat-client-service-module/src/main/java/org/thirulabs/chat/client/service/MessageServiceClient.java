@@ -43,6 +43,11 @@ public interface MessageServiceClient {
     boolean remove(Long id);
 
     /**
+     * Removes all messages
+     */
+    void removeAll();
+
+    /**
      * Returns message count
      * @return count
      */

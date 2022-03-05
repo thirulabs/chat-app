@@ -20,9 +20,7 @@ import java.util.Optional;
 @Slf4j
 @RequiredArgsConstructor
 public class ChatClientRunner implements ApplicationRunner {
-    private final MessageServiceClient client;
-    @Value("${chat.warmup.count:1}")
-    private int warmupCount;
+    private final MessageServiceClient messageServiceClient;
     @Value("${chat.operation.count:1}")
     private int operationCount;
     @Value("${chat.iteration.count:1}")
@@ -30,27 +28,34 @@ public class ChatClientRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        cleanUp();
         //testSingleCrudOperation();
         testClientPerformance();
     }
 
+    private void cleanUp() {
+        int count = messageServiceClient.count();
+        messageServiceClient.removeAll();
+        log.info("{} messages cleaned up.", count);
+    }
+
     private void testSingleCrudOperation(){
-        Message message = client.add(MessageFactory.create("Sample Create Message"));
+        Message message = messageServiceClient.add(MessageFactory.create("Sample Create Message"));
         Long id = message.getId();
         log.info("Message Added id: {} message: {}", message.getId(), message);
-        boolean updated = client.update(message.getId(), MessageFactory.create("Sample Update Message"));
+        boolean updated = messageServiceClient.update(message.getId(), MessageFactory.create("Sample Update Message"));
         log.info("Message Updated {}", updated);
-        int count = client.count();
+        int count = messageServiceClient.count();
         log.info("Message Count {}", count);
-        client.remove(message.getId());
+        messageServiceClient.remove(message.getId());
         log.info("Message Removed {}", id);
-        count = client.count();
+        count = messageServiceClient.count();
         log.info("Message Count {}", count);
     }
 
     private void testClientPerformance(){
-        log.info("Warming up count {}", warmupCount);
-        testServiceClient(0, warmupCount);
+        log.info("Warming up operations {}", operationCount);
+        testServiceClient(0, operationCount);
         log.info("Running {} iterations", iterationCount);
         for(int i=1;i<=iterationCount;i++){
             testServiceClient(i, operationCount);
@@ -65,17 +70,17 @@ public class ChatClientRunner implements ApplicationRunner {
         List<Long> idList = new ArrayList<>();
         //adding messages
         for(int i=0;i<operationCount;i++) {
-            Message message = client.add(MessageFactory.create(message1));
+            Message message = messageServiceClient.add(MessageFactory.create(message1));
             idList.add(message.getId());
         }
         //updating messages
         for(Long id: idList){
-            client.update(id, MessageFactory.create(message2));
+            messageServiceClient.update(id, MessageFactory.create(message2));
         }
 
         //verifying individual messages
         for(Long id: idList){
-            Optional<Message> message = client.findById(id);
+            Optional<Message> message = messageServiceClient.findById(id);
             if(message.isEmpty()){
                 log.warn("Message id {} not found", id);
             }
@@ -83,12 +88,12 @@ public class ChatClientRunner implements ApplicationRunner {
 
         //removing individual messages
         for(Long id: idList){
-            client.remove(id);
+            messageServiceClient.remove(id);
         }
 
         Instant endTime = Instant.now();
         log.info("Iteration: {} Inserts: {} Updates: {} Finds: {} Deletes: {} ClientType: {} Time taken: {} ms",
-                iterationNumber, operationCount, idList.size(), idList.size(), idList.size(), client.type(),
+                iterationNumber, operationCount, idList.size(), idList.size(), idList.size(), messageServiceClient.type(),
                 Duration.between(startTime, endTime).toMillis());
     }
 }
