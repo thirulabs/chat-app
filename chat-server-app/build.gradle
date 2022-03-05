@@ -15,9 +15,8 @@ dependencies {
     implementation project(':chat-server-restful-module')
     implementation project(':chat-server-rsocket-module')
     implementation project(':chat-server-dubbo-module')
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
