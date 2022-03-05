@@ -7,14 +7,14 @@ include 'chat-server-app'
 include 'chat-client-app'
 
 //server modules
-include 'chat-server-commons'
+include 'chat-server-service-module'
 include 'chat-server-grpc-module'
 include 'chat-server-rsocket-module'
 include 'chat-server-restful-module'
 include 'chat-server-dubbo-module'
 
 //client modules
-include 'chat-client-commons'
+include 'chat-client-service-module'
 include 'chat-client-grpc-module'
 include 'chat-client-restful-module'
 include 'chat-client-rsocket-module'

@@ -10,7 +10,7 @@ configurations {
 
 dependencies {
     implementation project(':chat-commons')
-    implementation project(':chat-server-commons')
+    implementation project(':chat-server-service-module')
     implementation project(':chat-server-grpc-module')
     implementation project(':chat-server-restful-module')
     implementation project(':chat-server-rsocket-module')
