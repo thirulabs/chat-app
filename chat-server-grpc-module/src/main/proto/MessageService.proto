@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "package org.thirulabs.chat.commons.proto.service";
+option java_package = "org.thirulabs.chat.commons.proto.service";
 option java_outer_classname = "MessageServiceProto";
 
 import "google/protobuf/empty.proto";
