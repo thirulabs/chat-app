@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "package org.thirulabs.chat.commons.proto.service";
+option java_outer_classname = "MessageServiceProto";
+
+import "google/protobuf/empty.proto";
+import "Message.proto";
+
+package org.thirulabs.chat.commons.proto.service;
+
+service MessageService {
+  rpc add(Message) returns(Message){}
+  rpc update(Message) returns(Message) {}
+  rpc removeById(MessageID) returns(google.protobuf.Empty) {}
+  rpc removeAll(google.protobuf.Empty) returns(google.protobuf.Empty) {}
+  rpc findAll(google.protobuf.Empty) returns(MessageArray){}
+  rpc findById(MessageID) returns (Message){}
+}
