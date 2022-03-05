@@ -54,7 +54,7 @@ public class ChatClientRunner implements ApplicationRunner {
     }
 
     private void testClientPerformance(){
-        log.info("Warming up operations {}", operationCount);
+        log.info("Warming up with {} operations", operationCount);
         testServiceClient(0, operationCount);
         log.info("Running {} iterations", iterationCount);
         for(int i=1;i<=iterationCount;i++){
@@ -92,8 +92,8 @@ public class ChatClientRunner implements ApplicationRunner {
         }
 
         Instant endTime = Instant.now();
-        log.info("Iteration: {} Inserts: {} Updates: {} Finds: {} Deletes: {} ClientType: {} Time taken: {} ms",
-                iterationNumber, operationCount, idList.size(), idList.size(), idList.size(), messageServiceClient.type(),
-                Duration.between(startTime, endTime).toMillis());
+        log.info("Iteration {}: {} inserts, {} updates, {} finds, {} Deletes, {} client, time-taken: {} ms",
+                iterationNumber, operationCount, idList.size(), idList.size(), idList.size(),
+                messageServiceClient.type(), Duration.between(startTime, endTime).toMillis());
     }
 }
