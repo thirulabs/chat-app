@@ -5,9 +5,10 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.stereotype.Controller;
 import org.thirulabs.chat.commons.proto.Message;
 import org.thirulabs.chat.commons.proto.MessageArray;
+import org.thirulabs.chat.commons.proto.Status;
 import org.thirulabs.chat.server.service.proto.ProtoMessageService;
 
-//@Controller
+@Controller
 @RequiredArgsConstructor
 public class RSocketProtobufMessageService {
     private final ProtoMessageService protoMessageService;
@@ -28,12 +29,12 @@ public class RSocketProtobufMessageService {
     }
 
     @MessageMapping("update-message")
-    public boolean update(Message message) {
+    public Status update(Message message) {
         return protoMessageService.update(message);
     }
 
     @MessageMapping("remove-by-id")
-    public boolean remove(Long id) {
+    public Status remove(Long id) {
         return protoMessageService.remove(id);
     }
 

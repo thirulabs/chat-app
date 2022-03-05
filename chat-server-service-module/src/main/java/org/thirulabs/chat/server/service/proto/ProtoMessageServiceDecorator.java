@@ -5,9 +5,10 @@ import org.springframework.stereotype.Service;
 import org.thirulabs.chat.commons.MessageMapper;
 import org.thirulabs.chat.commons.proto.Message;
 import org.thirulabs.chat.commons.proto.MessageArray;
+import org.thirulabs.chat.commons.proto.Status;
 import org.thirulabs.chat.server.service.MessageService;
 
-@Service
+//@Service
 @RequiredArgsConstructor
 public class ProtoMessageServiceDecorator implements ProtoMessageService{
     private final MessageService messageService;
@@ -33,14 +34,16 @@ public class ProtoMessageServiceDecorator implements ProtoMessageService{
     }
 
     @Override
-    public boolean update(Message message) {
+    public Status update(Message message) {
         var msg = MessageMapper.INSTANCE.map(message);
-        return messageService.update(msg.getId(), msg);
+        boolean updated = messageService.update(msg.getId(), msg);
+        return Status.newBuilder().setSuccess(updated).build();
     }
 
     @Override
-    public boolean remove(Long id) {
-        return messageService.remove(id);
+    public Status remove(Long id) {
+        boolean removed = messageService.remove(id);
+        return Status.newBuilder().setSuccess(removed).build();
     }
 
     @Override

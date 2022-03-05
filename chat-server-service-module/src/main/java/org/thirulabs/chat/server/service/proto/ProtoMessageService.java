@@ -3,6 +3,7 @@ package org.thirulabs.chat.server.service.proto;
 
 import org.thirulabs.chat.commons.proto.Message;
 import org.thirulabs.chat.commons.proto.MessageArray;
+import org.thirulabs.chat.commons.proto.Status;
 
 public interface ProtoMessageService {
     /**
@@ -30,14 +31,14 @@ public interface ProtoMessageService {
      * @param message message
      * @return on success
      */
-    boolean update(Message message);
+    Status update(Message message);
 
     /**
      * Returns true if removal is success
      * @param id of message
      * @return true on success
      */
-    boolean remove(Long id);
+    Status remove(Long id);
 
     /**
      * Removes all messages
