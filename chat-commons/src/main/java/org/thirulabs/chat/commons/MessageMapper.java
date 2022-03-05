@@ -31,4 +31,5 @@ public interface MessageMapper {
     org.thirulabs.chat.commons.proto.Message map(Message message);
 
     List<org.thirulabs.chat.commons.proto.Message> map(List<Message> list);
+    List<Message> asList(List<org.thirulabs.chat.commons.proto.Message> list);
 }

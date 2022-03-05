@@ -1,9 +1,23 @@
 plugins {
     id 'java'
+    id 'com.google.protobuf' version '0.8.18'
 }
 
 dependencies {
-    
+
+    implementation project(':chat-commons')
+    implementation project(':chat-commons-grpc')
+    implementation project(':chat-client-service-module')
+    implementation 'org.springframework:spring-context'
+    implementation 'org.springframework.boot:spring-boot'
+
+    //grpc dependencies
+    implementation "io.grpc:grpc-protobuf:${grpcVersion}"
+    implementation "io.grpc:grpc-stub:${grpcVersion}"
+    implementation "com.google.protobuf:protobuf-java-util:${protobufVersion}"
+    runtimeOnly "io.grpc:grpc-netty-shaded:${grpcVersion}"
+    testImplementation "io.grpc:grpc-testing:${grpcVersion}"
+
 }
 
 test {

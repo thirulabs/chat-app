@@ -1,11 +1,13 @@
 package org.thirulabs.chat.client.runner;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Service;
+import org.thirulabs.chat.client.service.ClientType;
 import org.thirulabs.chat.client.service.MessageServiceClient;
 import org.thirulabs.chat.commons.Message;
 import org.thirulabs.chat.commons.MessageFactory;
@@ -18,9 +20,11 @@ import java.util.Optional;
 
 @Service
 @Slf4j
-@RequiredArgsConstructor
 public class ChatClientRunner implements ApplicationRunner {
-    private final MessageServiceClient messageServiceClient;
+    @Autowired
+    @Qualifier(ClientType.GRPC)
+    private MessageServiceClient messageServiceClient;
+
     @Value("${chat.operation.count:1}")
     private int operationCount;
     @Value("${chat.iteration.count:1}")

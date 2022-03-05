@@ -27,12 +27,14 @@ public class MessageGrpcService extends MessageServiceGrpc.MessageServiceImplBas
     public void update(Message request, StreamObserver<Message> responseObserver) {
         boolean updated = messageService.update(request.getMessageID(), MessageMapper.INSTANCE.map(request));
         //TODO change the return type of rpc to boolean
+        responseObserver.onNext(request); //TODO change it to boolean instead of returning the request object
         responseObserver.onCompleted();
     }
 
     @Override
     public void removeById(MessageID request, StreamObserver<Empty> responseObserver) {
         messageService.remove(request.getMessageID());
+        responseObserver.onNext(Empty.newBuilder().build());
         responseObserver.onCompleted();
         //TODO handle error cases
     }
@@ -40,6 +42,7 @@ public class MessageGrpcService extends MessageServiceGrpc.MessageServiceImplBas
     @Override
     public void removeAll(Empty request, StreamObserver<Empty> responseObserver) {
         messageService.removeAll();
+        responseObserver.onNext(Empty.newBuilder().build());
         responseObserver.onCompleted();
     }
 
