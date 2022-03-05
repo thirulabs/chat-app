@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 
 @Configuration
-public class Config {
+public class RestConfig {
     @Bean
     public ProtobufHttpMessageConverter protobufHttpMessageConverter() {
         return new ProtobufHttpMessageConverter();

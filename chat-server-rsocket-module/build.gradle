@@ -3,7 +3,10 @@ plugins {
 }
 
 dependencies {
-    
+    implementation project(':chat-commons')
+    implementation project(':chat-server-service-module')
+
+    implementation 'org.springframework.boot:spring-boot-starter-rsocket'
 }
 
 test {

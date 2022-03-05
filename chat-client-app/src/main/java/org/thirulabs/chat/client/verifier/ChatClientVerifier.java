@@ -3,7 +3,6 @@ package org.thirulabs.chat.client.verifier;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -14,8 +13,6 @@ import org.thirulabs.chat.client.service.MessageServiceClient;
 import org.thirulabs.chat.commons.Message;
 import org.thirulabs.chat.commons.MessageFactory;
 
-import java.time.Duration;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -25,7 +22,7 @@ import java.util.Optional;
 @Order(1)
 public class ChatClientVerifier implements ApplicationRunner {
     @Autowired
-    @Qualifier(ClientType.GRPC)
+    @Qualifier(ClientType.RSOCKET)
     private MessageServiceClient messageServiceClient;
 
     @Override

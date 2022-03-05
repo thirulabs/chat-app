@@ -14,11 +14,10 @@ import java.util.List;
 public interface MessageMapper {
     MessageMapper INSTANCE = Mappers.getMapper(MessageMapper.class);
 
-    default Date map(Timestamp ts) {
+    default Date asDate(Timestamp ts) {
         return new Date(Timestamps.toMillis(ts));
     }
-
-    default Timestamp map(Date date){
+    default Timestamp asTimestamp(Date date){
         return Timestamps.fromDate(date);
     }
 
