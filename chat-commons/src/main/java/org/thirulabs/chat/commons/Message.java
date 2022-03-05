@@ -2,12 +2,12 @@ package org.thirulabs.chat.commons;
 
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 public class Message {
     private Long id;
     private String message;
-    private LocalDateTime createdTs;
+    private Date createdTs;
     private int likes;
 }

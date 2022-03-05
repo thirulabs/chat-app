@@ -5,7 +5,10 @@ plugins {
 
 dependencies {
     implementation project(':chat-commons')
+    implementation project(':chat-commons-grpc')
     implementation project(':chat-server-service-module')
+    implementation 'org.springframework:spring-context'
+    implementation 'org.springframework.boot:spring-boot'
 
     //grpc dependencies
     implementation "io.grpc:grpc-protobuf:${grpcVersion}"
@@ -15,27 +18,6 @@ dependencies {
     testImplementation "io.grpc:grpc-testing:${grpcVersion}"
 
 }
-
-protobuf {
-    protoc { artifact = "com.google.protobuf:protoc:${protocVersion}" }
-    plugins {
-        grpc { artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}" }
-    }
-    generateProtoTasks {
-        all()*.plugins { grpc {} }
-    }
-}
-
-// Inform IDEs like IntelliJ IDEA, Eclipse or NetBeans about the generated code.
-sourceSets {
-    main {
-        java {
-            srcDirs 'build/generated/source/proto/main/grpc'
-            srcDirs 'build/generated/source/proto/main/java'
-        }
-    }
-}
-
 
 test {
     useJUnitPlatform()
