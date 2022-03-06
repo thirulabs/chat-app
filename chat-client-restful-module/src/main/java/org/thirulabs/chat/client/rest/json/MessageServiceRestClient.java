@@ -12,6 +12,8 @@ import org.springframework.web.client.RestTemplate;
 import org.thirulabs.chat.client.service.ClientType;
 import org.thirulabs.chat.client.service.MessageServiceClient;
 import org.thirulabs.chat.commons.Message;
+import org.thirulabs.chat.commons.annotation.JsonEncoding;
+import org.thirulabs.chat.commons.annotation.Restful;
 
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
@@ -20,7 +22,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Qualifier(ClientType.REST)
+@Restful
+@JsonEncoding
 @RequiredArgsConstructor
 @Slf4j
 public class MessageServiceRestClient implements MessageServiceClient {

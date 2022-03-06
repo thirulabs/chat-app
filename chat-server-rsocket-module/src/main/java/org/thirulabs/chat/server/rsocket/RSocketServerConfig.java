@@ -20,9 +20,9 @@ public class RSocketServerConfig {
 
         @Bean
         public RSocketMessageHandler rsocketMessageHandler() {
-            //to avoid the on error dropped log messages when rsocket client closes the connection
+            //to avoid the on error dropped error messages logged to log when rsocket client closes the connection
             Hooks.onErrorDropped(t -> {
-                log.warn("Dropped: {}", t.getMessage());
+                log.warn("RSocket client closed connection: {}", t.getMessage());
             });
 
             RSocketMessageHandler handler = new RSocketMessageHandler();

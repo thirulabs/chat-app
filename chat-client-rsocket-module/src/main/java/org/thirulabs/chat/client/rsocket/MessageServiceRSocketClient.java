@@ -1,14 +1,14 @@
 package org.thirulabs.chat.client.rsocket;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.stereotype.Service;
 import org.thirulabs.chat.client.service.ClientType;
 import org.thirulabs.chat.client.service.MessageServiceClient;
 import org.thirulabs.chat.commons.Message;
 import org.thirulabs.chat.commons.Status;
+import org.thirulabs.chat.commons.annotation.JsonEncoding;
+import org.thirulabs.chat.commons.annotation.RSocket;
 import reactor.core.publisher.Mono;
 
 import java.util.Arrays;
@@ -20,12 +20,11 @@ import java.util.Optional;
  * https://docs.spring.io/spring-integration/reference/html/rsocket.html
  */
 @Service
-@Qualifier(ClientType.RSOCKET)
+@RSocket
+@JsonEncoding
 @RequiredArgsConstructor
-@ConditionalOnProperty(value = "chat.message.type", havingValue = "json")
 public class MessageServiceRSocketClient implements MessageServiceClient {
     private final RSocketRequester rSocketRequester;
-
 
     @Override
     public String type() {

@@ -3,13 +3,13 @@ package org.thirulabs.chat.client.grpc;
 import com.google.protobuf.Empty;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.thirulabs.chat.client.service.ClientType;
 import org.thirulabs.chat.client.service.MessageServiceClient;
 import org.thirulabs.chat.commons.Message;
 import org.thirulabs.chat.commons.MessageMapper;
+import org.thirulabs.chat.commons.annotation.Grpc;
 import org.thirulabs.chat.commons.proto.MessageID;
 import org.thirulabs.chat.commons.proto.grpc.MessageServiceGrpc;
 
@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Qualifier(ClientType.GRPC)
+@Grpc
 public class MessageServiceGrpcClient implements MessageServiceClient {
     @Value("${chat.server.grpc.host}")
     private String grpcHost;

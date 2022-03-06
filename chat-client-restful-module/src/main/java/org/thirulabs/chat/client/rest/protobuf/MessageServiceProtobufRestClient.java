@@ -12,6 +12,8 @@ import org.thirulabs.chat.client.service.ClientType;
 import org.thirulabs.chat.client.service.MessageServiceClient;
 import org.thirulabs.chat.commons.Message;
 import org.thirulabs.chat.commons.MessageMapper;
+import org.thirulabs.chat.commons.annotation.ProtobufEncoding;
+import org.thirulabs.chat.commons.annotation.Restful;
 import org.thirulabs.chat.commons.proto.MessageArray;
 
 import javax.annotation.PostConstruct;
@@ -20,7 +22,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Qualifier(ClientType.REST_PROTOBUF)
+@Restful
+@ProtobufEncoding
 @RequiredArgsConstructor
 @Slf4j
 public class MessageServiceProtobufRestClient implements MessageServiceClient {

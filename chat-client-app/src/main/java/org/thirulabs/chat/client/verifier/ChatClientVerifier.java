@@ -1,14 +1,12 @@
 package org.thirulabs.chat.client.verifier;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-import org.thirulabs.chat.client.service.ClientType;
 import org.thirulabs.chat.client.service.MessageServiceClient;
 import org.thirulabs.chat.commons.Message;
 import org.thirulabs.chat.commons.MessageFactory;
@@ -20,10 +18,9 @@ import java.util.Optional;
 @Service
 @Slf4j
 @Order(1)
+@RequiredArgsConstructor
 public class ChatClientVerifier implements ApplicationRunner {
-    @Autowired
-    @Qualifier(ClientType.RSOCKET)
-    private MessageServiceClient messageServiceClient;
+    private final MessageServiceClient messageServiceClient;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {

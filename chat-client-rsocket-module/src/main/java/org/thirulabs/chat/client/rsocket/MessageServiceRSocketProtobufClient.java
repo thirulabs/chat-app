@@ -1,14 +1,14 @@
 package org.thirulabs.chat.client.rsocket;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.stereotype.Service;
 import org.thirulabs.chat.client.service.ClientType;
 import org.thirulabs.chat.client.service.MessageServiceClient;
 import org.thirulabs.chat.commons.Message;
 import org.thirulabs.chat.commons.MessageMapper;
+import org.thirulabs.chat.commons.annotation.ProtobufEncoding;
+import org.thirulabs.chat.commons.annotation.RSocket;
 import org.thirulabs.chat.commons.proto.MessageArray;
 import org.thirulabs.chat.commons.proto.MessageID;
 import org.thirulabs.chat.commons.proto.Status;
@@ -22,12 +22,11 @@ import java.util.Optional;
  * https://docs.spring.io/spring-integration/reference/html/rsocket.html
  */
 @Service
-@Qualifier(ClientType.RSOCKET_PROTOBUF)
+@RSocket
+@ProtobufEncoding
 @RequiredArgsConstructor
-@ConditionalOnProperty(value = "chat.message.type", havingValue = "protobuf")
 public class MessageServiceRSocketProtobufClient implements MessageServiceClient {
     private final RSocketRequester rSocketRequester;
-
 
     @Override
     public String type() {
