@@ -9,6 +9,7 @@ import org.thirulabs.chat.commons.Message;
 import org.thirulabs.chat.commons.MessageMapper;
 import org.thirulabs.chat.client.annotation.ProtobufEncoding;
 import org.thirulabs.chat.client.annotation.RSocket;
+import org.thirulabs.chat.commons.MessagePaths;
 import org.thirulabs.chat.commons.proto.MessageArray;
 import org.thirulabs.chat.commons.proto.MessageID;
 import org.thirulabs.chat.commons.proto.Status;
@@ -33,10 +34,14 @@ public class MessageServiceRSocketClient implements MessageServiceClient {
         return ClientType.RSOCKET_PROTOBUF;
     }
 
+    private static String protoPrefix(String path){
+        return MessagePaths.PROTO_PREFIX + path;
+    }
+
     @Override
     public Optional<Message> findById(Long id) {
         var mono = rSocketRequester
-                .route("proto.message.find.by.id")
+                .route(protoPrefix(MessagePaths.FIND_MESSAGE_BY_ID))
                 .data(MessageID.newBuilder().setMessageID(id).build())
                 .retrieveMono(org.thirulabs.chat.commons.proto.Message.class);
         var optionalMessage = mono.blockOptional();
@@ -49,7 +54,7 @@ public class MessageServiceRSocketClient implements MessageServiceClient {
     @Override
     public List<Message> findAll() {
         var mono = rSocketRequester
-                .route("proto.message.find.all")
+                .route(protoPrefix(MessagePaths.FIND_ALL_MESSAGES))
                 .retrieveMono(MessageArray.class);
         return MessageMapper.INSTANCE.asList(mono.block().getArrayList());
     }
@@ -57,7 +62,7 @@ public class MessageServiceRSocketClient implements MessageServiceClient {
     @Override
     public Message add(Message message) {
         var mono = rSocketRequester
-                .route("proto.message.add")
+                .route(protoPrefix(MessagePaths.ADD_MESSAGE))
                 .data(MessageMapper.INSTANCE.map(message))
                 .retrieveMono(org.thirulabs.chat.commons.proto.Message.class);
         return MessageMapper.INSTANCE.map(mono.block());
@@ -67,7 +72,7 @@ public class MessageServiceRSocketClient implements MessageServiceClient {
     public boolean update(Long id, Message message) {
         message.setId(id);
         var resultMono = rSocketRequester
-                .route("proto.message.update")
+                .route(protoPrefix(MessagePaths.UPDATE_MESSAGE))
                 .data(MessageMapper.INSTANCE.map(message))
                 .retrieveMono(Status.class);
         return resultMono.block().getSuccess();
@@ -76,7 +81,7 @@ public class MessageServiceRSocketClient implements MessageServiceClient {
     @Override
     public boolean remove(Long id) {
         Mono<Status> resultMono = rSocketRequester
-                .route("proto.message.remove.by.id")
+                .route(protoPrefix(MessagePaths.REMOVE_MESSAGE_BY_ID))
                 .data(MessageID.newBuilder().setMessageID(id).build())
                 .retrieveMono(Status.class);
         return resultMono.block().getSuccess();
@@ -85,7 +90,7 @@ public class MessageServiceRSocketClient implements MessageServiceClient {
     @Override
     public void removeAll() {
         Mono<Void> resultMono = rSocketRequester
-                .route("proto.message.remove.all")
+                .route(protoPrefix(MessagePaths.REMOVE_ALL_MESSAGES))
                 .retrieveMono(Void.class);
         resultMono.block();
     }

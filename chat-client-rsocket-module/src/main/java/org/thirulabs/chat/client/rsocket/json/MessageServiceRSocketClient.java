@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.thirulabs.chat.client.service.ClientType;
 import org.thirulabs.chat.client.service.MessageServiceClient;
 import org.thirulabs.chat.commons.Message;
+import org.thirulabs.chat.commons.MessagePaths;
 import org.thirulabs.chat.commons.Status;
 import org.thirulabs.chat.client.annotation.JsonEncoding;
 import org.thirulabs.chat.client.annotation.RSocket;
@@ -31,10 +32,14 @@ public class MessageServiceRSocketClient implements MessageServiceClient {
         return ClientType.RSOCKET;
     }
 
+    private static String jsonPrefix(String path){
+        return MessagePaths.JSON_PREFIX + path;
+    }
+
     @Override
     public Optional<Message> findById(Long id) {
         Mono<Message> messageMono = rSocketRequester
-                .route("find-by-id")
+                .route(jsonPrefix(MessagePaths.FIND_MESSAGE_BY_ID))
                 .data(id)
                 .retrieveMono(Message.class);
         return messageMono.blockOptional();
@@ -43,7 +48,7 @@ public class MessageServiceRSocketClient implements MessageServiceClient {
     @Override
     public List<Message> findAll() {
         Mono<Message[]> mono = rSocketRequester
-                .route("find-all")
+                .route(jsonPrefix(MessagePaths.FIND_ALL_MESSAGES))
                 .retrieveMono(Message[].class);
         return Arrays.asList(mono.block());
     }
@@ -51,7 +56,7 @@ public class MessageServiceRSocketClient implements MessageServiceClient {
     @Override
     public Message add(Message message) {
         Mono<Message> messageMono = rSocketRequester
-                .route("add-message")
+                .route(jsonPrefix(MessagePaths.ADD_MESSAGE))
                 .data(message)
                 .retrieveMono(Message.class);
         return messageMono.block();
@@ -61,7 +66,7 @@ public class MessageServiceRSocketClient implements MessageServiceClient {
     public boolean update(Long id, Message message) {
         message.setId(id);
         Mono<Status> resultMono = rSocketRequester
-                .route("update-message")
+                .route(jsonPrefix(MessagePaths.UPDATE_MESSAGE))
                 .data(message)
                 .retrieveMono(Status.class);
         return resultMono.block().isSuccess();
@@ -70,7 +75,7 @@ public class MessageServiceRSocketClient implements MessageServiceClient {
     @Override
     public boolean remove(Long id) {
         Mono<Status> resultMono = rSocketRequester
-                .route("remove-by-id")
+                .route(jsonPrefix(MessagePaths.REMOVE_MESSAGE_BY_ID))
                 .data(id)
                 .retrieveMono(Status.class);
         return resultMono.block().isSuccess();
@@ -79,7 +84,7 @@ public class MessageServiceRSocketClient implements MessageServiceClient {
     @Override
     public void removeAll() {
         Mono<Void> resultMono = rSocketRequester
-                .route("remove-all")
+                .route(jsonPrefix(MessagePaths.REMOVE_ALL_MESSAGES))
                 .retrieveMono(Void.class);
         resultMono.block();
     }
