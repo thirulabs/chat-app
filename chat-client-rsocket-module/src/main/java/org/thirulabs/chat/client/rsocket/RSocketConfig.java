@@ -9,9 +9,9 @@ import org.springframework.http.codec.protobuf.ProtobufDecoder;
 import org.springframework.http.codec.protobuf.ProtobufEncoder;
 import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.messaging.rsocket.RSocketStrategies;
-import org.thirulabs.chat.commons.annotation.JsonEncoding;
-import org.thirulabs.chat.commons.annotation.ProtobufEncoding;
-import org.thirulabs.chat.commons.annotation.RSocket;
+import org.thirulabs.chat.client.annotation.JsonEncoding;
+import org.thirulabs.chat.client.annotation.ProtobufEncoding;
+import org.thirulabs.chat.client.annotation.RSocket;
 
 @Configuration
 @RSocket

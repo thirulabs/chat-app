@@ -7,8 +7,8 @@ import org.thirulabs.chat.client.service.ClientType;
 import org.thirulabs.chat.client.service.MessageServiceClient;
 import org.thirulabs.chat.commons.Message;
 import org.thirulabs.chat.commons.Status;
-import org.thirulabs.chat.commons.annotation.JsonEncoding;
-import org.thirulabs.chat.commons.annotation.RSocket;
+import org.thirulabs.chat.client.annotation.JsonEncoding;
+import org.thirulabs.chat.client.annotation.RSocket;
 import reactor.core.publisher.Mono;
 
 import java.util.Arrays;

@@ -4,6 +4,7 @@ plugins {
 
 dependencies {
     implementation project(':chat-commons')
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
     
 }
 

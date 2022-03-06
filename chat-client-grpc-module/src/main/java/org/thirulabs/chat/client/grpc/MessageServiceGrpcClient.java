@@ -9,7 +9,7 @@ import org.thirulabs.chat.client.service.ClientType;
 import org.thirulabs.chat.client.service.MessageServiceClient;
 import org.thirulabs.chat.commons.Message;
 import org.thirulabs.chat.commons.MessageMapper;
-import org.thirulabs.chat.commons.annotation.Grpc;
+import org.thirulabs.chat.client.annotation.Grpc;
 import org.thirulabs.chat.commons.proto.MessageID;
 import org.thirulabs.chat.commons.proto.grpc.MessageServiceGrpc;
 

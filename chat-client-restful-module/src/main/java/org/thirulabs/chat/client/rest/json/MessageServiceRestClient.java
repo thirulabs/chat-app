@@ -2,7 +2,6 @@ package org.thirulabs.chat.client.rest.json;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -12,8 +11,8 @@ import org.springframework.web.client.RestTemplate;
 import org.thirulabs.chat.client.service.ClientType;
 import org.thirulabs.chat.client.service.MessageServiceClient;
 import org.thirulabs.chat.commons.Message;
-import org.thirulabs.chat.commons.annotation.JsonEncoding;
-import org.thirulabs.chat.commons.annotation.Restful;
+import org.thirulabs.chat.client.annotation.JsonEncoding;
+import org.thirulabs.chat.client.annotation.Restful;
 
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
