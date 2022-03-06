@@ -3,7 +3,13 @@ plugins {
 }
 
 dependencies {
-    
+    implementation project(':chat-commons')
+    implementation project(':chat-commons-dubbo')
+    implementation project(':chat-client-service-module')
+
+    implementation 'org.springframework:spring-context'
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+    implementation "org.apache.dubbo:dubbo:$dubboVersion"
 }
 
 test {

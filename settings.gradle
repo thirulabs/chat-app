@@ -2,6 +2,7 @@ rootProject.name = 'chat-app'
 //common library module
 include 'chat-commons'
 include 'chat-commons-grpc'
+include 'chat-commons-dubbo'
 
 //main applications
 include 'chat-server-app'

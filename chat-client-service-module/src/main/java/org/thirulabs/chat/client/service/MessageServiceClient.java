@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface MessageServiceClient {
-    String type();
+    ClientType type();
     /**
      * Finds message by id
      * @param id of message

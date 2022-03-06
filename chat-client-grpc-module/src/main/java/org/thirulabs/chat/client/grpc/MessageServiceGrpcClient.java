@@ -33,7 +33,7 @@ public class MessageServiceGrpcClient implements MessageServiceClient {
     }
 
     @Override
-    public String type() {
+    public ClientType type() {
         return ClientType.GRPC;
     }
 

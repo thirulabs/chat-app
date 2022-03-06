@@ -28,7 +28,7 @@ public class MessageServiceRSocketClient implements MessageServiceClient {
     private final RSocketRequester rSocketRequester;
 
     @Override
-    public String type() {
+    public ClientType type() {
         return ClientType.RSOCKET;
     }
 

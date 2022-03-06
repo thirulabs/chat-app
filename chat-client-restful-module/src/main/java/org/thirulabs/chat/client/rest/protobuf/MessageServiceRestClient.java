@@ -40,7 +40,7 @@ public class MessageServiceRestClient implements MessageServiceClient {
     }
 
     @Override
-    public String type() {
+    public ClientType type() {
         return ClientType.REST_PROTOBUF;
     }
 
