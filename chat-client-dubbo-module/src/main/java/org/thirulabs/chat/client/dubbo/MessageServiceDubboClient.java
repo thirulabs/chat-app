@@ -2,6 +2,7 @@ package org.thirulabs.chat.client.dubbo;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.thirulabs.chat.client.annotation.Dubbo;
 import org.thirulabs.chat.client.service.ClientType;
 import org.thirulabs.chat.client.service.MessageServiceClient;
 import org.thirulabs.chat.commons.Message;
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Dubbo
 public class MessageServiceDubboClient implements MessageServiceClient {
     private final DubboMessageService dubboMessageService;
 
