@@ -1,4 +1,4 @@
-package org.thirulabs.chat.server.service.inmemory;
+package org.thirulabs.chat.server.service.persistence;
 
 
 import org.springframework.stereotype.Service;

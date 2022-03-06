@@ -13,7 +13,7 @@ import org.thirulabs.chat.server.service.proto.ProtoMessageService;
 
 @Service
 @RequiredArgsConstructor
-public class ProtoMessageGrpcService extends MessageServiceGrpc.MessageServiceImplBase {
+public class GrpcMessageService extends MessageServiceGrpc.MessageServiceImplBase {
     private final ProtoMessageService messageService;
 
     @Override
