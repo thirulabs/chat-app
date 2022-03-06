@@ -1,4 +1,4 @@
-package org.thirulabs.chat.client.rsocket;
+package org.thirulabs.chat.client.rsocket.protobuf;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.rsocket.RSocketRequester;
@@ -25,7 +25,7 @@ import java.util.Optional;
 @RSocket
 @ProtobufEncoding
 @RequiredArgsConstructor
-public class MessageServiceRSocketProtobufClient implements MessageServiceClient {
+public class MessageServiceRSocketClient implements MessageServiceClient {
     private final RSocketRequester rSocketRequester;
 
     @Override

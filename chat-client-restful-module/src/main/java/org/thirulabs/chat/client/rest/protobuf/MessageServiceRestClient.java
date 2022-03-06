@@ -2,7 +2,6 @@ package org.thirulabs.chat.client.rest.protobuf;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -26,7 +25,7 @@ import java.util.Optional;
 @ProtobufEncoding
 @RequiredArgsConstructor
 @Slf4j
-public class MessageServiceProtobufRestClient implements MessageServiceClient {
+public class MessageServiceRestClient implements MessageServiceClient {
     private final Environment environment;
     private final RestTemplate restTemplate;
 

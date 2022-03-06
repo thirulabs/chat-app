@@ -1,4 +1,4 @@
-package org.thirulabs.chat.client.rsocket;
+package org.thirulabs.chat.client.rsocket.json;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.rsocket.RSocketRequester;
