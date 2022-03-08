@@ -1,5 +1,5 @@
-## Chat App
-A sample application used in comparing performance of commonly used microservice communication frameworks
+## Comparison of microservice communication frameworks
+Chat App is a sample application used in comparing performance of commonly used microservice communication frameworks
 
 ### Communication frameworks compared
 * gRPC

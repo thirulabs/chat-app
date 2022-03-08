@@ -1,4 +1,3 @@
 theme: jekyll-theme-cayman
-title: Chat App
-description: Compares commonly used microservice communication frameworks
+title: Comparison of microservice communication frameworks
 show_downloads: false
