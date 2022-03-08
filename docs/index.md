@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Chat App
 
 You can use the [editor on GitHub](https://github.com/thirulabs/chat-app/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
 
