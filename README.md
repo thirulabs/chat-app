@@ -1,7 +1,7 @@
 ## A brief comparison of microservice communication frameworks
 Chat App is a sample application used in comparing performance of commonly used microservice communication frameworks
 
-### Communication frameworks compared
+Following communication frameworks are compared in this application
 * gRPC
 * RSocket
 * Apache Dubbo
