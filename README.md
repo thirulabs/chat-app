@@ -18,16 +18,16 @@ Follow this link to download [ChatApp](https://github.com/thirulabs/chat-app/arc
 Open the command prompt and go the project root folder
 
 #### Chat server
-Following command starts the chat server 
+To start the chat server, run 
 ```console
 gradlew :chat-server-app:bootRun
 ```
 #### Chat client
-Following command starts a specific chat client (eg. rsocket)
+To start a specific chat client (eg. rsocket), run
 ```console
 gradlew :chat-client-app:bootRun --args='--client.type=rsocket'
 ```
-*Note:* The above command starts chat-client and runs performance tests and logs results to console 
+**Note:** The above command starts chat-client and runs performance tests and logs results to console 
 
 #### Supported client types
 - grpc
@@ -39,7 +39,7 @@ gradlew :chat-client-app:bootRun --args='--client.type=rsocket'
 - protobuf
 - json
 
-*Note:* gRPC & Dubbo clients use default message encodings 
+**Note:** gRPC & Dubbo clients use default message encodings 
 
 ### Results
 Please see [comparison of microservice communication frameworks](https://medium.com/todo) for more details.
