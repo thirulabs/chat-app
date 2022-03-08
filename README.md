@@ -1,7 +1,7 @@
 ## Chat App
 Sample chat application used in evaluating performance of commonly used microservice communication frameworks
 
-### Following communication frameworks are compared in this app
+### Performance of following communication frameworks are compared
 * gRPC
 * RSocket
 * Apache Dubbo
@@ -18,21 +18,25 @@ Sample chat application used in evaluating performance of commonly used microser
 ### Steps to run the application
 Use the following commands to run server or client from the project root folder 
 #### Chat server
-gradlew :chat-server-app:bootRun
-
+```console
+user@host$ gradlew :chat-server-app:bootRun
+```
 #### Chat client
-gradlew :chat-client-app:bootRun -Pargs=--client.type=rsocket,--message.encoding=protobuf
+```console
+user@host$ gradlew :chat-client-app:bootRun -Pargs=--client.type=rsocket,--message.encoding=protobuf
+```
 
-Supported client types are
+#### Client types supported are
 - grpc
 - rsocket
 - dubbo
 - rest
 
-Supported message encodings are
+#### Message encodings supported are
 - protobuf
 - json
 
+*Note:* gRPC & Dubbo clients use default message encodings 
 
 ### Results
 For the performance results see [a quick comparision of commonly used microservice communication frameworks](https://medium.com/todo).
