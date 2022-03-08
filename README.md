@@ -1,4 +1,6 @@
 ## Chat App
+Sample chat application used in performance evaluation of commonly used microservices frameworks
+
 
 You can use the [editor on GitHub](https://github.com/thirulabs/chat-app/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
