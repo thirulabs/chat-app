@@ -9,7 +9,6 @@ A sample application used in comparing performance of commonly used microservice
 
 ### Requirements
 * Java 11
-* Gradle 7
 
 ### Downloads
 Follow this link to download [ChatApp](https://github.com/thirulabs/chat-app/archive/refs/tags/1.0.0.zip).
