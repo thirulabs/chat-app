@@ -1,1 +1,4 @@
 theme: jekyll-theme-cayman
+title: Chat App
+description: Sample chat application used in performance evaluation of commonly used microservices frameworks
+show_downloads: true
