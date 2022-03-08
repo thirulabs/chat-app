@@ -1,6 +1,6 @@
-Chat App is a sample application used to compare performance of commonly used microservice communication frameworks
+ChatApp is a sample application used to compare performance of commonly used microservice communication frameworks
 
-Following frameworks/protocols are compared using Java implementation 
+Following frameworks/protocols are compared using Java their implementation 
 * gRPC
 * RSocket
 * Apache Dubbo
@@ -9,7 +9,7 @@ Following frameworks/protocols are compared using Java implementation
 ### Prerequisites
 * Java 11
 
-### Downloads
+### To get the sample code
 Download the [ChatApp](https://github.com/thirulabs/chat-app/archive/refs/tags/1.0.0.zip) repo as a zip file
 
 ### Steps to run the application
