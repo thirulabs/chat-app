@@ -16,15 +16,18 @@ Sample chat application used in evaluating performance of commonly used microser
 
 
 ### Steps to run the application
-Use the following commands to run server or client from the project root folder 
+Open the command prompt and go the project root folder
 #### Chat server
+Use the following command to start the chat server 
 ```console
-user@host$ gradlew :chat-server-app:bootRun
+gradlew :chat-server-app:bootRun
 ```
 #### Chat client
+Use the following command to start the chat client of a specific type (eg. rsocket)
 ```console
-user@host$ gradlew :chat-client-app:bootRun -Pargs=--client.type=rsocket,--message.encoding=protobuf
+gradlew :chat-client-app:bootRun --args='--client.type=rsocket'
 ```
+Note: The above command starts client and runs the performance tests and logs the output to console 
 
 #### Client types supported are
 - grpc
