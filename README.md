@@ -24,7 +24,7 @@ Starts chat server
 ```console
 gradlew :chat-client-app:bootRun --args='--client.type=rsocket'
 ```
-Starts a specific chat client, that uses rsocket for communication
+Starts a specific chat client, that uses rsocket for communication  
 **Note:** The above command starts chat-client, runs performance tests and logs results to console 
 
 #### Supported client types
