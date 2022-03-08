@@ -1,7 +1,7 @@
 ## Chat App
-Sample chat application used in evaluating performance of commonly used microservice communication frameworks
+Is a sample application used for comparing performance of commonly used microservice communication frameworks
 
-### Communication frameworks used
+### Communication frameworks compared
 * gRPC
 * RSocket
 * Apache Dubbo
@@ -11,24 +11,23 @@ Sample chat application used in evaluating performance of commonly used microser
 * Java 11
 * Gradle 7
 
-### Download
+### Downloads
 Follow this link to download [ChatApp](https://github.com/thirulabs/chat-app/archive/refs/tags/1.0.0.zip).
-
 
 ### Steps to run the application
 Open the command prompt and go the project root folder
 
 #### Chat server
-Use the following command to start the chat server 
+Following command starts the chat server 
 ```console
 gradlew :chat-server-app:bootRun
 ```
 #### Chat client
-Use the following command to start a specific chat client (eg. rsocket)
+Following command starts a specific chat client (eg. rsocket)
 ```console
 gradlew :chat-client-app:bootRun --args='--client.type=rsocket'
 ```
-*Note:* The above command starts client and runs the performance tests and logs the output to console 
+*Note:* The above command starts chat-client and runs performance tests and logs results to console 
 
 #### Supported client types
 - grpc
@@ -43,5 +42,5 @@ gradlew :chat-client-app:bootRun --args='--client.type=rsocket'
 *Note:* gRPC & Dubbo clients use default message encodings 
 
 ### Results
-Please see [a quick comparison of commonly used microservice communication frameworks](https://medium.com/todo) for details of results.
+Please see [comparison of microservice communication frameworks](https://medium.com/todo) for more details.
 
