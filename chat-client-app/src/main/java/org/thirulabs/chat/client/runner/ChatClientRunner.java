@@ -76,27 +76,32 @@ public class ChatClientRunner implements ApplicationRunner {
             Message message = messageServiceClient.add(MessageFactory.create(message1));
             idList.add(message.getId());
         }
+        Instant insertCompletionTs = Instant.now();
         //updating messages
         for(Long id: idList){
             messageServiceClient.update(id, MessageFactory.create(message2));
         }
 
-        //verifying individual messages
+        Instant updateCompletionTs = Instant.now();
+        //find individual messages and verify
         for(Long id: idList){
             Optional<Message> message = messageServiceClient.findById(id);
             if(message.isEmpty()){
                 log.warn("Message id {} not found", id);
             }
         }
-
+        Instant findCompletionTs = Instant.now();
         //removing individual messages
         for(Long id: idList){
             messageServiceClient.remove(id);
         }
 
         Instant endTime = Instant.now();
-        log.info("Iteration {}: {} inserts, {} updates, {} finds, {} Deletes, {} client, time-taken: {} ms",
-                iterationNumber, operationCount, idList.size(), idList.size(), idList.size(),
+        log.info("Iteration {}: {} inserts in {} ms, {} updates in {} ms, {} finds in {} ms, {} Deletes in {} ms, {} client, total-time-taken: {} ms",
+                iterationNumber, operationCount, Duration.between(startTime, insertCompletionTs).toMillis(),
+                idList.size(), Duration.between(insertCompletionTs, updateCompletionTs).toMillis(),
+                idList.size(), Duration.between(updateCompletionTs, findCompletionTs).toMillis(),
+                idList.size(), Duration.between(findCompletionTs, endTime).toMillis(),
                 messageServiceClient.type(), Duration.between(startTime, endTime).toMillis());
     }
 }
