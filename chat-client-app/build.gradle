@@ -13,6 +13,7 @@ dependencies {
     implementation project(':chat-client-service-module')
     implementation project(':chat-client-grpc-module')
     implementation project(':chat-client-restful-module')
+    implementation project(':chat-client-restful-h2-module')
     implementation project(':chat-client-rsocket-module')
     implementation project(':chat-client-dubbo-module')
     implementation 'org.springframework.boot:spring-boot-starter'

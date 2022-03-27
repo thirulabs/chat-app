@@ -19,6 +19,7 @@ include 'chat-server-dubbo-module'
 include 'chat-client-service-module'
 include 'chat-client-grpc-module'
 include 'chat-client-restful-module'
+include 'chat-client-restful-h2-module'
 include 'chat-client-rsocket-module'
 include 'chat-client-dubbo-module'
 
