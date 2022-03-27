@@ -7,6 +7,6 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@ConditionalOnProperty(value = "client.type", havingValue = "rest")
-public @interface Restful {
+@ConditionalOnProperty(value = "client.type", havingValue = "rest-v2")
+public @interface RestfulV2 {
 }

@@ -1,47 +1,33 @@
 package org.thirulabs.chat.client.rest.json;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.env.Environment;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.thirulabs.chat.client.service.ClientType;
 import org.thirulabs.chat.client.service.MessageServiceClient;
 import org.thirulabs.chat.commons.Message;
-import org.thirulabs.chat.client.annotation.JsonEncoding;
-import org.thirulabs.chat.client.annotation.Restful;
 
-import javax.annotation.PostConstruct;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-@Service
-@Restful
-@JsonEncoding
-@RequiredArgsConstructor
 @Slf4j
-public class MessageServiceRestClient implements MessageServiceClient {
-    private final Environment environment;
-    private RestTemplate restTemplate = new RestTemplate();
-    private String chatServerUrl;
+public abstract class AbstractMessageServiceRestClient implements MessageServiceClient {
     private static final String MESSAGE_URI_FORMAT = "%s/message";
     private static final String MESSAGE_ID_URI_FORMAT = MESSAGE_URI_FORMAT + "/%s";
 
+    private final RestTemplate restTemplate;
+    private final String chatServerUrl;
 
-    @PostConstruct
-    void init(){
-        chatServerUrl = environment.getProperty("chat.server.url");
+    protected AbstractMessageServiceRestClient(RestTemplate restTemplate, String chatServerUrl) {
+        this.restTemplate = restTemplate;
+        this.chatServerUrl = chatServerUrl;
     }
 
-    @Override
-    public ClientType type() {
-        return ClientType.REST;
-    }
+    public abstract ClientType type();
 
     @Override
     public Optional<Message> findById(Long id) {
