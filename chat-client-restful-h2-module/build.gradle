@@ -6,6 +6,7 @@ plugins {
 dependencies {
     implementation project(':chat-commons')
     implementation project(':chat-client-service-module')
+    implementation project(':chat-client-restful-module')
     implementation 'org.springframework:spring-web'
     implementation 'org.springframework:spring-context'
     implementation 'org.springframework.boot:spring-boot'

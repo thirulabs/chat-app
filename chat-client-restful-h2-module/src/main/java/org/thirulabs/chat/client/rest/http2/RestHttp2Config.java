@@ -3,6 +3,7 @@ package org.thirulabs.chat.client.rest.http2;
 import okhttp3.OkHttpClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.OkHttp3ClientHttpRequestFactory;
 import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
@@ -10,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import org.thirulabs.chat.client.annotation.JsonEncoding;
 import org.thirulabs.chat.client.annotation.ProtobufEncoding;
 import org.thirulabs.chat.client.annotation.RestfulH2;
+import org.thirulabs.chat.client.annotation.RestfulV1;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
@@ -23,7 +25,8 @@ import java.util.Arrays;
 public class RestHttp2Config {
 
     @Bean
-    public ProtobufHttpMessageConverter protobufHttpMessageConverter() {
+    @Primary //quick fix - need move protobuf message converter into a common configuration
+    public ProtobufHttpMessageConverter protobufHttp2MessageConverter() {
         return new ProtobufHttpMessageConverter();
     }
 
