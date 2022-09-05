@@ -40,5 +40,5 @@ Starts a specific chat client, that uses rsocket for communication
 **Note:** gRPC & Dubbo clients use default message encodings 
 
 ### Results
-Please see [comparison of microservice communication frameworks](https://medium.com/todo) for more details
+Please see [comparison of microservice communication frameworks](https://thirulabs.medium.com/a-comparison-of-microservice-communication-frameworks-c188955928e8) for more details
 
